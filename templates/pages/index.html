@@ -1,0 +1,68 @@
+{{ define "content" }}
+<div class="py-8">
+    <h2 class="text-4xl font-bold mb-8 text-center">Добро пожаловать в каталог фильмов</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" x-data="{ hoveredMovie: null }">
+        <!-- Здесь будут категории фильмов -->
+        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+            <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4">Драма</h3>
+                <p class="text-gray-400 mb-4">Драматические фильмы, затрагивающие глубокие эмоциональные темы</p>
+                <a href="/category/drama" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    Смотреть фильмы
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+            <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4">Комедия</h3>
+                <p class="text-gray-400 mb-4">Легкие и забавные фильмы, которые поднимут настроение</p>
+                <a href="/category/comedy" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    Смотреть фильмы
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+            <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4">Фантастика и фэнтези</h3>
+                <p class="text-gray-400 mb-4">Захватывающие истории о других мирах и невероятных приключениях</p>
+                <a href="/category/fantasy" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    Смотреть фильмы
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+            <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4">Триллер и детектив</h3>
+                <p class="text-gray-400 mb-4">Напряженные истории с неожиданными поворотами сюжета</p>
+                <a href="/category/thriller" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    Смотреть фильмы
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+            <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4">Биографический</h3>
+                <p class="text-gray-400 mb-4">Фильмы, основанные на реальных историях выдающихся личностей</p>
+                <a href="/category/biography" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    Смотреть фильмы
+                </a>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105">
+            <div class="p-6">
+                <h3 class="text-2xl font-bold mb-4">Исторический и военный</h3>
+                <p class="text-gray-400 mb-4">Фильмы о важных исторических событиях и военных конфликтах</p>
+                <a href="/category/historical" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-300">
+                    Смотреть фильмы
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

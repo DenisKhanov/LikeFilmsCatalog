@@ -1,0 +1,673 @@
+{
+  "biography": [
+    {
+      "id": "gran-turismo",
+      "title": "Gran Turismo",
+      "year": 2023,
+      "category": "biography",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "how-to-hack-exam",
+      "title": "Как взломать экзамен",
+      "year": 2024,
+      "category": "biography",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "snow-brotherhood",
+      "title": "Снежное братство",
+      "year": 2023,
+      "category": "biography",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "tetris",
+      "title": "Тетрис",
+      "year": 2023,
+      "category": "biography",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "green-book",
+      "title": "Зеленая книга",
+      "year": 2018,
+      "category": "biography",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    }
+  ],
+  "comedy": [
+    {
+      "id": "chef-battle",
+      "title": "Битва шефов",
+      "year": 2023,
+      "category": "comedy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "jerry-marge",
+      "title": "Джерри и Мардж играют по-крупному",
+      "year": 2022,
+      "category": "comedy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "kitchen-stars",
+      "title": "Кухня со звездами",
+      "year": 2023,
+      "category": "comedy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "mr-blake",
+      "title": "Мистер Блейк к вашим услугам",
+      "year": 2023,
+      "category": "comedy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "terrible-neighbor",
+      "title": "Ужасный сосед",
+      "year": 2023,
+      "category": "comedy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "change-up",
+      "title": "Хочу как ты",
+      "year": 2011,
+      "category": "comedy",
+      "description": "Комедия о двух друзьях с противоположными жизнями, которые волшебным образом меняются телами.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "\"Хочу как ты\" (The Change-Up) - комедия о двух друзьях с совершенно разными жизнями. Митч (Райан Рейнольдс) - безответственный холостяк, а Дэйв (Джейсон Бейтман) - успешный юрист, муж и отец троих детей. Однажды ночью, после совместной попойки, они одновременно высказывают желание пожить жизнью друг друга, и на следующее утро обнаруживают, что их сознания поменялись телами. Теперь Митч должен справляться с семейными обязанностями и работой Дэйва, а Дэйв - с беспорядочной жизнью Митча. Эта ситуация приводит к множеству комичных ситуаций, но также заставляет друзей по-новому взглянуть на свои жизни и переоценить свои приоритеты."
+    }
+  ],
+  "drama": [
+    {
+      "id": "arthur-king",
+      "title": "Артур, ты король",
+      "year": 2024,
+      "category": "drama",
+      "description": "История о спортсмене-экстремале, который во время гонки в Доминикане встречает бездомного пса, ставшего его верным другом и помощником.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "Фильм \"Артур, ты король\" основан на реальных событиях. Майкл (Марк Уолберг) — опытный выживальщик и ветеран экстремальных гонок. Три года назад он с командой был близок к победе, но потерпел фиаско, что морально уничтожило его. Теперь он решает попытаться снова и собирает команду для участия в экстремальных гонках в Доминикане. Во время соревнований к команде прибивается бездомный пес, которого они называют Артуром. Именно дружба с этим псом помогает Майклу и его команде пройти сложнейший путь до конца. Фильм рассказывает трогательную историю о дружбе человека и собаки в экстремальных условиях."
+    },
+    {
+      "id": "white-bird",
+      "title": "Белая птица: Новое чудо",
+      "year": 2023,
+      "category": "drama",
+      "description": "Драматическая история о еврейском мальчике, скрывающемся от нацистов во Франции во время Второй мировой войны.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "\"Белая птица: Новое чудо\" - драматический фильм, продолжающий историю, начатую в фильме \"Чудо\". Действие происходит во время Второй мировой войны во Франции. Еврейский мальчик Джулиан находит убежище в сельской школе, где его прячет от нацистов девочка Сара и её семья. Несмотря на опасность и трудности военного времени, между детьми возникает особая связь. Фильм рассказывает о силе доброты, храбрости и человечности в самые тёмные времена истории."
+    },
+    {
+      "id": "eternal-sunshine",
+      "title": "Вечное сияние чистого разума",
+      "year": 2004,
+      "category": "drama",
+      "description": "Психологическая драма о паре, решившей стереть воспоминания друг о друге после расставания.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "\"Вечное сияние чистого разума\" - психологическая драма с элементами фантастики. После болезненного расставания Джоэл Бэриш (Джим Керри) узнаёт, что его бывшая девушка Клементина (Кейт Уинслет) обратилась в компанию Lacuna Inc., чтобы стереть все воспоминания о их отношениях. Потрясённый этим, Джоэл решает сделать то же самое. Однако во время процедуры стирания памяти, погружаясь в собственные воспоминания, Джоэл понимает, что не хочет забывать Клементину, и пытается сохранить хотя бы часть воспоминаний о ней. Фильм исследует темы памяти, любви и того, что делает отношения значимыми."
+    },
+    {
+      "id": "beautiful-mind",
+      "title": "Игры разума",
+      "year": 2001,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "centaur",
+      "title": "Кентавр",
+      "year": 2023,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "million-dollar-baby",
+      "title": "Малышка на миллион",
+      "year": 2004,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "all-quiet",
+      "title": "На западном фронте без перемен",
+      "year": 2022,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "caddo-lake",
+      "title": "Озеро Каддо",
+      "year": 2024,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "one-life",
+      "title": "Одна жизнь",
+      "year": 2023,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "first-day",
+      "title": "Первый день моей жизни",
+      "year": 2023,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "seven-years-tibet",
+      "title": "Семь лет в Тибете",
+      "year": 1997,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "intertwined-fates",
+      "title": "Сплетение судеб",
+      "year": 2023,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "killers-flower-moon",
+      "title": "Убийцы цветочной луны",
+      "year": 2023,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "good-will-hunting",
+      "title": "Умница Уилл Хантинг",
+      "year": 1997,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "hitman-last-job",
+      "title": "Хитмен. Последнее дело",
+      "year": 2023,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "dogman",
+      "title": "Догмен",
+      "year": 2023,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "count-monte-cristo",
+      "title": "Граф Монте-Кристо",
+      "year": 2024,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "gladiator",
+      "title": "Гладиатор",
+      "year": 2000,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "awakening",
+      "title": "Пробуждение",
+      "year": 1990,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "pianist",
+      "title": "Пианист",
+      "year": 2002,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "erin-brockovich",
+      "title": "Эрин Брокович",
+      "year": 2000,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "no-family",
+      "title": "Без семьи",
+      "year": 2018,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "cast-away",
+      "title": "Изгой",
+      "year": 2000,
+      "category": "drama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    }
+  ],
+  "fantasy": [
+    {
+      "id": "avatar-2",
+      "title": "Аватар 2",
+      "year": 2022,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "edge-of-tomorrow",
+      "title": "Грань будущего",
+      "year": 2014,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "deja-vu",
+      "title": "Дежавю",
+      "year": 2006,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "dune",
+      "title": "Дюна",
+      "year": 2021,
+      "category": "fantasy",
+      "description": "Эпическая научно-фантастическая сага о молодом наследнике знатного рода, чья семья получает в управление опасную пустынную планету.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "\"Дюна\" - эпическая научно-фантастическая сага режиссёра Дени Вильнёва, экранизация одноимённого романа Фрэнка Герберта. Действие происходит в далёком будущем, где молодой Пол Атрейдес (Тимоти Шаламе) вместе со своей семьёй прибывает на опасную планету Арракис, известную как Дюна. Эта пустынная планета является единственным источником самого ценного вещества во вселенной - \"пряности\", которая продлевает жизнь и расширяет сознание. Когда семья Атрейдесов становится жертвой предательства, Пол вынужден бежать в пустыню, где его ждёт встреча с коренными жителями планеты - фременами, и начало пути к своему предназначению. Фильм сочетает в себе политические интриги, религиозные мотивы и экологические темы."
+    },
+    {
+      "id": "dune-2",
+      "title": "Дюна 2",
+      "year": 2024,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "interstellar",
+      "title": "Интерстеллар",
+      "year": 2014,
+      "category": "fantasy",
+      "description": "Научно-фантастический фильм о путешествии через червоточину в поисках новой планеты для человечества.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "\"Интерстеллар\" - научно-фантастический эпос режиссёра Кристофера Нолана. В недалёком будущем Земля становится непригодной для жизни из-за экологической катастрофы. Бывший пилот NASA Купер (Мэттью МакКонахи) присоединяется к секретной миссии по поиску новой планеты для человечества. Экспедиция проходит через червоточину возле Сатурна, исследуя потенциально обитаемые планеты в другой галактике. Фильм сочетает в себе захватывающие космические приключения с глубокими размышлениями о любви, времени и человеческой природе. Особое внимание уделяется отношениям Купера с его дочерью Мёрф, которую он оставил на Земле ради спасения человечества."
+    },
+    {
+      "id": "source-code",
+      "title": "Исходный код",
+      "year": 2011,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "inception",
+      "title": "Начало",
+      "year": 2010,
+      "category": "fantasy",
+      "description": "Научно-фантастический триллер о технологии проникновения в сны людей для кражи или внедрения идей.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "\"Начало\" - научно-фантастический триллер режиссёра Кристофера Нолана. Доминик Кобб (Леонардо ДиКаприо) - специалист по извлечению информации из подсознания людей во время сна. Ему предлагают необычное задание: не украсть идею, а внедрить её в сознание человека - процесс, известный как \"внедрение\". Для выполнения этой сложной миссии Кобб собирает команду профессионалов, которые должны создать многоуровневый сон внутри сна. Фильм исследует природу реальности, подсознания и памяти, предлагая зрителю запутанный, но захватывающий сюжет с неоднозначной концовкой."
+    },
+    {
+      "id": "oblivion",
+      "title": "Обливион",
+      "year": 2013,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "passengers",
+      "title": "Пассажиры",
+      "year": 2016,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "sunshine",
+      "title": "Пекло",
+      "year": 2007,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "dungeons-dragons",
+      "title": "Подземелья и драконы: честь среди воров",
+      "year": 2023,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "paradise",
+      "title": "Рай земной",
+      "year": 2023,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "dreamland",
+      "title": "Страна снов",
+      "year": 2022,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "dark-reflections",
+      "title": "Темные отражения",
+      "year": 2018,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "real-steel",
+      "title": "Живая сталь",
+      "year": 2011,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "tenet",
+      "title": "Довод",
+      "year": 2020,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "martian",
+      "title": "Марсианин",
+      "year": 2015,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "jacket",
+      "title": "Пиджак",
+      "year": 2004,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "pandorum",
+      "title": "Пандорум",
+      "year": 2009,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "contact",
+      "title": "Контакт",
+      "year": 1997,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "moon",
+      "title": "Луна 2112",
+      "year": 2009,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "abyss",
+      "title": "Бездна",
+      "year": 1989,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "gattaca",
+      "title": "Гаттака",
+      "year": 1997,
+      "category": "fantasy",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    }
+  ],
+  "historical": [
+    {
+      "id": "no-answer",
+      "title": "Без ответа",
+      "year": 2023,
+      "category": "historical",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "bandit",
+      "title": "Бандит",
+      "year": 2022,
+      "category": "historical",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "left-behind",
+      "title": "Оставленные",
+      "year": 2023,
+      "category": "historical",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "fires",
+      "title": "Пожары",
+      "year": 2010,
+      "category": "historical",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "300",
+      "title": "300 спартанцев",
+      "year": 2006,
+      "category": "historical",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "all-quiet-western",
+      "title": "На Западном фронте без перемен",
+      "year": 2022,
+      "category": "historical",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    }
+  ],
+  "melodrama": [
+    {
+      "id": "serendipity",
+      "title": "Интуиция",
+      "year": 2001,
+      "category": "melodrama",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    }
+  ],
+  "thriller": [
+    {
+      "id": "hypnotic",
+      "title": "Гипнотик",
+      "year": 2023,
+      "category": "thriller",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "two-three-demon",
+      "title": "Два, три, демон приди",
+      "year": 2022,
+      "category": "thriller",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "catch-me",
+      "title": "Поймай меня, если сможешь",
+      "year": 2002,
+      "category": "thriller",
+      "description": "Криминальный триллер, основанный на реальной истории молодого мошенника, за которым охотится агент ФБР.",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": "\"Поймай меня, если сможешь\" - биографический криминальный фильм режиссёра Стивена Спилберга, основанный на реальной истории Фрэнка Абигнейла-младшего. В 1960-х годах, ещё будучи подростком, Фрэнк (Леонардо ДиКаприо) становится одним из самых успешных мошенников в истории США. Он мастерски подделывает чеки, выдаёт себя за пилота авиакомпании, врача и адвоката, обманывая людей на миллионы долларов. За ним неустанно следует агент ФБР Карл Хэнрэтти (Том Хэнкс), который постепенно сближается с Фрэнком в ходе этой необычной \"игры в кошки-мышки\". Фильм сочетает в себе элементы драмы, комедии и триллера, исследуя темы идентичности, отцовства и искупления."
+    },
+    {
+      "id": "stalker",
+      "title": "Сталкер",
+      "year": 2023,
+      "category": "thriller",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "stop-word",
+      "title": "Стоп слово",
+      "year": 2023,
+      "category": "thriller",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "gods-creation",
+      "title": "Творение Господне",
+      "year": 2017,
+      "category": "thriller",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "trap",
+      "title": "Ловушка",
+      "year": 2024,
+      "category": "thriller",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    },
+    {
+      "id": "leave-the-world-behind",
+      "title": "Весь мир позади",
+      "year": 2023,
+      "category": "thriller",
+      "description": "",
+      "imagePath": "/static/images/movies/placeholder.jpg",
+      "fullDescription": ""
+    }
+  ]
+}

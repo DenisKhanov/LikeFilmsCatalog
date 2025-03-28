@@ -1,0 +1,28 @@
+{{ define "content" }}
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8 text-center">Каталог фильмов</h1>
+    
+    <div id="movies-container">
+        <!-- Здесь будут отображаться фильмы по категориям -->
+        <div class="text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+            <p class="mt-4 text-xl">Загрузка фильмов...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Инициализация Alpine.js компонентов
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('movieCatalog', () => ({
+            hoveredMovie: null,
+            setHoveredMovie(movie) {
+                this.hoveredMovie = movie;
+            },
+            clearHoveredMovie() {
+                this.hoveredMovie = null;
+            }
+        }));
+    });
+</script>
+{{ end }}
