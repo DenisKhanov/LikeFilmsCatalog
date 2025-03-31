@@ -2,10 +2,11 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
-	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
 )
@@ -38,9 +39,15 @@ var templates *template.Template
 func main() {
 	// Загружаем шаблоны
 	var err error
-	templates, err = template.ParseGlob("templates/*/*.html")
+	templates, err = template.ParseGlob("templates/*.html")
+	// Получаем срез всех шаблонов
+	allTemplates := templates.Templates()
 
-	//templates, err = template.ParseGlob("templates/*.html")
+	// Выводим информацию о каждом шаблоне
+	for _, tmpl := range allTemplates {
+		fmt.Println("Имя шаблона:", tmpl.Name())
+	}
+
 	if err != nil {
 		log.Fatalf("Ошибка при загрузке шаблонов: %v", err)
 	}
@@ -72,9 +79,10 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 
 	data := map[string]interface{}{
 		"title": "Каталог фильмов",
+		"page":  "index",
 	}
 
-	err := templates.ExecuteTemplate(w, "index.html", data)
+	err := templates.ExecuteTemplate(w, "base.html", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -84,9 +92,10 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 func handleMovies(w http.ResponseWriter, r *http.Request) {
 	data := map[string]interface{}{
 		"title": "Все фильмы",
+		"page":  "movies",
 	}
 
-	err := templates.ExecuteTemplate(w, "movies.html", data)
+	err := templates.ExecuteTemplate(w, "base.html", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -103,9 +112,10 @@ func handleCategory(w http.ResponseWriter, r *http.Request) {
 	data := map[string]interface{}{
 		"title":    categoryTitle,
 		"category": category,
+		"pages":    "category",
 	}
 
-	err := templates.ExecuteTemplate(w, "movies.html", data)
+	err := templates.ExecuteTemplate(w, "base.html", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -115,7 +125,7 @@ func handleCategory(w http.ResponseWriter, r *http.Request) {
 func handleAPIMovies(w http.ResponseWriter, r *http.Request) {
 	// Загружаем данные о фильмах из JSON файла
 	jsonFilePath := filepath.Join("static", "data", "movies.json")
-	jsonData, err := ioutil.ReadFile(jsonFilePath)
+	jsonData, err := os.ReadFile(jsonFilePath)
 	if err != nil {
 		http.Error(w, "Не удалось загрузить данные о фильмах", http.StatusInternalServerError)
 		return
@@ -134,7 +144,7 @@ func handleAPIMoviesByCategory(w http.ResponseWriter, r *http.Request) {
 
 	// Загружаем данные о фильмах из JSON файла
 	jsonFilePath := filepath.Join("static", "data", "movies.json")
-	jsonData, err := ioutil.ReadFile(jsonFilePath)
+	jsonData, err := os.ReadFile(jsonFilePath)
 	if err != nil {
 		http.Error(w, "Не удалось загрузить данные о фильмах", http.StatusInternalServerError)
 		return
@@ -175,7 +185,7 @@ func handleAPIMovie(w http.ResponseWriter, r *http.Request) {
 
 	// Загружаем данные о фильмах из JSON файла
 	jsonFilePath := filepath.Join("static", "data", "movies.json")
-	jsonData, err := ioutil.ReadFile(jsonFilePath)
+	jsonData, err := os.ReadFile(jsonFilePath)
 	if err != nil {
 		http.Error(w, "Не удалось загрузить данные о фильмах", http.StatusInternalServerError)
 		return

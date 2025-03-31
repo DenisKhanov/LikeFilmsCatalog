@@ -56,6 +56,23 @@ body {
   transform: scale(1.1);
 }
 
+/* Затемнение изображения при наведении */
+.movie-poster::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Прозрачный по умолчанию */
+  transition: background-color 0.3s ease;
+  z-index: 1; /* Поверх изображения, но под текстом */
+}
+
+.movie-card:hover .movie-poster::after {
+  background-color: rgba(0, 0, 0, 0.6); /* Затемнение при наведении */
+}
+
 .movie-info {
   position: absolute;
   bottom: 0;
@@ -65,6 +82,7 @@ body {
   padding: 20px;
   transform: translateY(100%);
   transition: transform var(--transition-speed) ease;
+  z-index: 2; /* Поверх затемнения */
 }
 
 .movie-card:hover .movie-info {
@@ -181,7 +199,7 @@ body {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 20px 0;
+  padding: 65px;
   scrollbar-width: none; /* Firefox */
 }
 
@@ -192,7 +210,7 @@ body {
 .movie-slider-item {
   flex: 0 0 auto;
   width: 200px;
-  margin-right: 15px;
+  margin-right: 1px;
 }
 
 /* Кнопки навигации слайдера */
@@ -217,11 +235,11 @@ body {
 }
 
 .slider-nav-prev {
-  left: 10px;
+  left: -1.1cm;
 }
 
 .slider-nav-next {
-  right: 10px;
+  right: -1.1cm;
 }
 
 /* Анимация для кнопок */
@@ -293,4 +311,124 @@ body {
 
 .nav-link.active::after {
   width: 100%;
+}
+
+
+.movie-modal {
+  position: absolute;
+  background-color: var(--background-light);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none; /* Блок скрыт, клики не проходят */
+  transition: opacity 0.3s ease;
+}
+.movie-modal.visible {
+  opacity: 1;
+  pointer-events: auto; /* Включаем клики после отображения */
+}
+
+/* Стили для текста описания фильма в модальном окне */
+.modal-content p,
+.modal-content .movie-description {
+  font-size: 13px; /* Уменьшенный размер шрифта */
+  line-height: 1.2; /* Уменьшенная высота строки для компактности */
+  margin: 8px 0; /* Уменьшенные отступы между абзацами */
+}
+
+/* Если у вас есть заголовок фильма в модальном окне */
+.modal-content h2,
+.modal-content .movie-title {
+  font-size: 18px; /* Уменьшенный размер шрифта для заголовка */
+  margin: 10px 0;
+}
+
+/* Для информации о годе выпуска и других деталей */
+.modal-content .movie-details {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.modal-content {
+  background-color: var(--background-light);
+  max-width: 600px;
+  margin: auto;
+  padding: 2px;
+  border-radius: 10px;
+  width: 50%;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* Добавьте медиа-запрос для мобильных устройств */
+@media screen and (max-width: 768px) {
+  header h1,
+  header .site-title {
+    font-size: 18px; /* Уменьшенный размер для мобильных */
+  }
+  /* Если у вас есть навигационные ссылки в хедере */
+  header nav a {
+    font-size: 12px; /* Уменьшенный размер для ссылок навигации */
+    padding: 0; /* Уменьшенные отступы для компактности */
+  }
+  .modal-content {
+    width: 97%; /* Ширина для мобильных устройств */
+  }
+}
+/* Для смартфонов в портретной ориентации */
+@media screen and (max-width: 480px) {
+  header h1,
+  header .site-title {
+    font-size: 16px;
+  }
+
+  header nav a {
+    font-size: 10.5px;
+    padding: 0;
+  }
+  .modal-content {
+    width: 97%;
+    margin: 0 auto;
+  }
+}
+
+/* Для смартфонов в альбомной ориентации и планшетов в портретной */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+  }
+}
+
+/* Для планшетов в альбомной ориентации */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .modal-content {
+    width: 95%;
+  }
+}
+.modal-link {
+  display: block; /* Ссылка на новой строке */
+  margin-top: 10px; /* Отступ сверху */
+  color: var(--primary-color); /* Красный цвет из переменных */
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.modal-link:hover {
+  color: #f40612; /* Более яркий красный при наведении */
+  text-decoration: none; /* Убираем подчеркивание при наведении */
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-light);
+  z-index: 1010; /* Выше всех элементов модального окна */
+  pointer-events: auto; /* Убеждаемся, что клики проходят */
+}
+
+.close:hover {
+  color: var(--primary-color);
 }
