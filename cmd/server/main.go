@@ -1,14 +1,18 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"strings"
+	"syscall"
+	"time"
 )
 
 // MovieWithDescription представляет информацию о фильме
@@ -65,9 +69,36 @@ func main() {
 	http.HandleFunc("/api/movies/", handleAPIMoviesByCategory)
 	http.HandleFunc("/api/movie/", handleAPIMovie)
 
+	filmsServer := &http.Server{
+		Addr:    "localhost:8080",
+		Handler: nil,
+	}
 	// Запуск сервера
-	log.Println("Сервер запущен на http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+
+	go func() {
+		log.Printf("Сервер запущен на http://localhost%s", filmsServer.Addr)
+		if err = filmsServer.ListenAndServe(); err != nil {
+			log.Fatalf("Failed to start HTTP server: %v", err)
+		}
+	}()
+
+	// Shutdown signal with grace period of 5 seconds
+	signalChan := make(chan os.Signal, 1)
+	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+
+	sig := <-signalChan
+	log.Printf("Shutting down HTTP servers with signal : %v...", sig)
+
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancel()
+
+	if err := filmsServer.Shutdown(shutdownCtx); err != nil {
+		log.Printf("Ошибка при остановке HTTP-сервера: %v", err)
+	} else {
+		log.Println("HTTP-сервер успешно остановлен")
+	}
+
+	log.Println("Server exited")
 }
 
 // Обработчик главной страницы
