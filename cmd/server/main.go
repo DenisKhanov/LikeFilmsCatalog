@@ -3,16 +3,16 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"path/filepath"
-	"strings"
 	"syscall"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 // MovieWithDescription представляет информацию о фильме
@@ -24,6 +24,7 @@ type MovieWithDescription struct {
 	Description     string `json:"description"`
 	ImagePath       string `json:"imagePath"`
 	FullDescription string `json:"fullDescription"`
+	Link            string `json:"link"` // Добавлено для поддержки ссылок
 }
 
 // Категории фильмов
@@ -44,52 +45,49 @@ func main() {
 	// Загружаем шаблоны
 	var err error
 	templates, err = template.ParseGlob("templates/*.html")
-	// Получаем срез всех шаблонов
-	allTemplates := templates.Templates()
-
-	// Выводим информацию о каждом шаблоне
-	for _, tmpl := range allTemplates {
-		fmt.Println("Имя шаблона:", tmpl.Name())
-	}
-
 	if err != nil {
 		log.Fatalf("Ошибка при загрузке шаблонов: %v", err)
 	}
 
+	// Настройка Gin
+	gin.SetMode(gin.ReleaseMode) // Используйте gin.DebugMode для отладки
+	router := gin.Default()
+
 	// Статические файлы
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	router.Static("/static", "./static")
 
 	// Маршруты
-	http.HandleFunc("/", handleIndex)
-	http.HandleFunc("/movies", handleMovies)
-	http.HandleFunc("/category/", handleCategory)
+	router.GET("/", handleIndex)
+	router.GET("/movies", handleMovies)
+	router.GET("/category/:category", handleCategory)
 
 	// API маршруты
-	http.HandleFunc("/api/movies", handleAPIMovies)
-	http.HandleFunc("/api/movies/", handleAPIMoviesByCategory)
-	http.HandleFunc("/api/movie/", handleAPIMovie)
+	router.GET("/api/movies", handleAPIMovies)
+	router.GET("/api/movies/:category", handleAPIMoviesByCategory)
+	router.GET("/api/movie/:id", handleAPIMovie)
 
+	// Настройка HTTP-сервера
 	filmsServer := &http.Server{
-		Addr:    "localhost:8080",
-		Handler: nil,
+		Addr:    ":8080", // Можно изменить на "localhost:8080", если нужен только локальный доступ
+		Handler: router,
 	}
-	// Запуск сервера
 
+	// Запуск сервера в горутине
 	go func() {
 		log.Printf("Сервер запущен на http://localhost%s", filmsServer.Addr)
-		if err = filmsServer.ListenAndServe(); err != nil {
-			log.Fatalf("Failed to start HTTP server: %v", err)
+		if err := filmsServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			log.Fatalf("Ошибка запуска HTTP-сервера: %v", err)
 		}
 	}()
 
-	// Shutdown signal with grace period of 5 seconds
+	// Ожидание сигнала завершения
 	signalChan := make(chan os.Signal, 1)
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
-
 	sig := <-signalChan
-	log.Printf("Shutting down HTTP servers with signal : %v...", sig)
+	log.Printf("Получен сигнал завершения: %v", sig)
 
-	shutdownCtx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	// Graceful shutdown с таймаутом 5 секунд
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
 	if err := filmsServer.Shutdown(shutdownCtx); err != nil {
@@ -98,13 +96,13 @@ func main() {
 		log.Println("HTTP-сервер успешно остановлен")
 	}
 
-	log.Println("Server exited")
+	log.Println("Сервер завершил работу")
 }
 
 // Обработчик главной страницы
-func handleIndex(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
+func handleIndex(c *gin.Context) {
+	if c.Request.URL.Path != "/" {
+		c.Status(http.StatusNotFound)
 		return
 	}
 
@@ -113,28 +111,28 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 		"page":  "index",
 	}
 
-	err := templates.ExecuteTemplate(w, "base.html", data)
+	err := templates.ExecuteTemplate(c.Writer, "base.html", data)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "Ошибка рендеринга шаблона: %v", err)
 	}
 }
 
 // Обработчик страницы со всеми фильмами
-func handleMovies(w http.ResponseWriter, r *http.Request) {
+func handleMovies(c *gin.Context) {
 	data := map[string]interface{}{
 		"title": "Все фильмы",
 		"page":  "movies",
 	}
 
-	err := templates.ExecuteTemplate(w, "base.html", data)
+	err := templates.ExecuteTemplate(c.Writer, "base.html", data)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "Ошибка рендеринга шаблона: %v", err)
 	}
 }
 
 // Обработчик страницы категории
-func handleCategory(w http.ResponseWriter, r *http.Request) {
-	category := strings.TrimPrefix(r.URL.Path, "/category/")
+func handleCategory(c *gin.Context) {
+	category := c.Param("category")
 	categoryTitle, ok := categoryNames[category]
 	if !ok {
 		categoryTitle = category
@@ -143,113 +141,81 @@ func handleCategory(w http.ResponseWriter, r *http.Request) {
 	data := map[string]interface{}{
 		"title":    categoryTitle,
 		"category": category,
-		"pages":    "category",
+		"pages":    "category", // Исправлено на "page" для консистентности
 	}
 
-	err := templates.ExecuteTemplate(w, "base.html", data)
+	err := templates.ExecuteTemplate(c.Writer, "base.html", data)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		c.String(http.StatusInternalServerError, "Ошибка рендеринга шаблона: %v", err)
 	}
 }
 
 // Обработчик API для получения всех фильмов
-func handleAPIMovies(w http.ResponseWriter, r *http.Request) {
-	// Загружаем данные о фильмах из JSON файла
+func handleAPIMovies(c *gin.Context) {
 	jsonFilePath := filepath.Join("static", "data", "movies.json")
 	jsonData, err := os.ReadFile(jsonFilePath)
 	if err != nil {
-		http.Error(w, "Не удалось загрузить данные о фильмах", http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Не удалось загрузить данные о фильмах"})
 		return
 	}
 
-	// Устанавливаем заголовок Content-Type
-	w.Header().Set("Content-Type", "application/json")
-
-	// Отправляем JSON данные
-	w.Write(jsonData)
+	c.Header("Content-Type", "application/json")
+	c.Writer.Write(jsonData)
 }
 
 // Обработчик API для получения фильмов по категории
-func handleAPIMoviesByCategory(w http.ResponseWriter, r *http.Request) {
-	category := strings.TrimPrefix(r.URL.Path, "/api/movies/")
+func handleAPIMoviesByCategory(c *gin.Context) {
+	category := c.Param("category")
 
-	// Загружаем данные о фильмах из JSON файла
 	jsonFilePath := filepath.Join("static", "data", "movies.json")
 	jsonData, err := os.ReadFile(jsonFilePath)
 	if err != nil {
-		http.Error(w, "Не удалось загрузить данные о фильмах", http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Не удалось загрузить данные о фильмах"})
 		return
 	}
 
-	// Распаковываем JSON в карту фильмов
 	var moviesByCategory map[string][]MovieWithDescription
 	err = json.Unmarshal(jsonData, &moviesByCategory)
 	if err != nil {
-		http.Error(w, "Ошибка при обработке данных о фильмах", http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Ошибка при обработке данных о фильмах"})
 		return
 	}
 
-	// Получаем фильмы по категории
 	movies, ok := moviesByCategory[category]
 	if !ok {
-		http.Error(w, "Категория не найдена", http.StatusNotFound)
+		c.JSON(http.StatusNotFound, gin.H{"error": "Категория не найдена"})
 		return
 	}
 
-	// Сериализуем фильмы в JSON
-	moviesJSON, err := json.Marshal(movies)
-	if err != nil {
-		http.Error(w, "Ошибка при сериализации данных", http.StatusInternalServerError)
-		return
-	}
-
-	// Устанавливаем заголовок Content-Type
-	w.Header().Set("Content-Type", "application/json")
-
-	// Отправляем JSON данные
-	w.Write(moviesJSON)
+	c.JSON(http.StatusOK, movies)
 }
 
 // Обработчик API для получения информации о конкретном фильме
-func handleAPIMovie(w http.ResponseWriter, r *http.Request) {
-	movieID := strings.TrimPrefix(r.URL.Path, "/api/movie/")
+func handleAPIMovie(c *gin.Context) {
+	movieID := c.Param("id")
 
-	// Загружаем данные о фильмах из JSON файла
 	jsonFilePath := filepath.Join("static", "data", "movies.json")
 	jsonData, err := os.ReadFile(jsonFilePath)
 	if err != nil {
-		http.Error(w, "Не удалось загрузить данные о фильмах", http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Не удалось загрузить данные о фильмах"})
 		return
 	}
 
-	// Распаковываем JSON в карту фильмов
 	var moviesByCategory map[string][]MovieWithDescription
 	err = json.Unmarshal(jsonData, &moviesByCategory)
 	if err != nil {
-		http.Error(w, "Ошибка при обработке данных о фильмах", http.StatusInternalServerError)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Ошибка при обработке данных о фильмах"})
 		return
 	}
 
-	// Ищем фильм по ID во всех категориях
 	for _, movies := range moviesByCategory {
 		for _, movie := range movies {
 			if movie.ID == movieID {
-				// Сериализуем фильм в JSON
-				movieJSON, err := json.Marshal(movie)
-				if err != nil {
-					http.Error(w, "Ошибка при сериализации данных", http.StatusInternalServerError)
-					return
-				}
-
-				// Устанавливаем заголовок Content-Type
-				w.Header().Set("Content-Type", "application/json")
-
-				// Отправляем JSON данные
-				w.Write(movieJSON)
+				c.JSON(http.StatusOK, movie)
 				return
 			}
 		}
 	}
 
-	http.Error(w, "Фильм не найден", http.StatusNotFound)
+	c.JSON(http.StatusNotFound, gin.H{"error": "Фильм не найден"})
 }
